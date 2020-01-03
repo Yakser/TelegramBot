@@ -1,14 +1,14 @@
 import requests
 import json
-from time import sleep
+
 
 TOKEN = "991918669:AAGcmQcQYprrvUj-pSA2yZfBsGGTHQDBY5Y"
 MAIN_URL = f"https://api.telegram.org/bot{TOKEN}/"
 
 
 def get_data():
-    with requests.get("https://api.github.com/orgs/fedora-infra/repos") as r:
-        data = json.loads(r.text)
+    with requests.get("https://api.github.com/orgs/fedora-infra/repos") as req:
+        data = json.loads(req.text)
     return data
 
 
@@ -49,7 +49,6 @@ def main():
             send_message(get_chat_id(last_update(get_updates_json(MAIN_URL))), get_forks(last_chat_text))
 
             update_id += 1
-        sleep(0.1)
 
 
 if __name__ == '__main__':
