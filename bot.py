@@ -12,17 +12,10 @@ def get_data():
     return data
 
 
-def get_forks_count():
-    output_message = ""
-    for x in get_data():
-        output_message += x["name"] + ": " + str(x["forks_count"]) + "\n"
-    return output_message
-
-
-def get_repo_forks(name):
-    for x in get_data():
-        if name in x["name"]:
-            return x["forks"]
+def get_forks(name):
+    for i in get_data():
+        if name in i["name"]:
+            return i["forks"]
     return "Repository not found."
 
 
@@ -53,7 +46,7 @@ def main():
         if update_id == last_update(get_updates_json(MAIN_URL))['update_id']:
             last_chat_text = last_update(get_updates_json(MAIN_URL))['message']['text']
 
-            send_message(get_chat_id(last_update(get_updates_json(MAIN_URL))), get_repo_forks(last_chat_text))
+            send_message(get_chat_id(last_update(get_updates_json(MAIN_URL))), get_forks(last_chat_text))
 
             update_id += 1
         sleep(0.1)
