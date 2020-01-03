@@ -14,7 +14,7 @@ def get_updates_json(request):
 
 def last_update(data):
     results = data['result']
-    total_updates = len(results) - 1
+    total_updates = [len(results) - 1]
     return results[total_updates]
 
 
