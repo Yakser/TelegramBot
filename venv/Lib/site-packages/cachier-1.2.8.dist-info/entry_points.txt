@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        cachier=cachier.scripts.cli:cli
+    

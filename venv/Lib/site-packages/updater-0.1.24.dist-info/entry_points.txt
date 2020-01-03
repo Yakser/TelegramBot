@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        updater=check_version:cli
+    
